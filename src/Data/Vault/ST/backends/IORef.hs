@@ -20,6 +20,12 @@ unlock (Key k ref) (Locker k' m)
     | k == k' = unsafePerformIO $ do
         m
         -- FIXME: race condition!
+        --
+        -- If another unlock action is run concurrently with this one
+        -- on the same Key but a different Locker then that one may
+        -- overwrite ref with its value before this one has had a
+        -- chance to read from it, so this one may obtain the wrong
+        -- result.
         readIORef ref
     | otherwise = Nothing
 
