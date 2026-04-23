@@ -19,7 +19,8 @@ lock (Key u ref) x = Locker u $ writeIORef ref $ Just x
 unlock (Key k ref) (Locker k' m)
     | k == k' = unsafePerformIO $ do
         m
-        readIORef ref     -- FIXME: race condition!
+        -- FIXME: race condition!
+        readIORef ref
     | otherwise = Nothing
 
 {-----------------------------------------------------------------------------
