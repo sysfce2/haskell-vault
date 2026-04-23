@@ -20,7 +20,7 @@ newtype Key s a = Key Unique
 
 #if __GLASGOW_HASKELL__ >= 708
 type role Vault nominal
-type role Key nominal nominal
+type role Key nominal representational
 #endif
 
 newKey = unsafeIOToST $ Key <$> newUnique
