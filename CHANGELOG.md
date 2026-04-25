@@ -1,5 +1,9 @@
 ## Changelog for the `vault` package
 
+**next version**
+
+Changed
+
 * Make value type of `Key` representational (in GHC backend)
 
 **0.3.1.6**
